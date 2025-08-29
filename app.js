@@ -4,6 +4,13 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
+// internal imports
+
+const {
+  errorHandler,
+  notfoundHandler,
+} = require("./middlewares/common/errorHandler");
+
 const app = express();
 dotenv.config();
 
@@ -25,6 +32,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // parse cookies
 app.use(cookieParser(process.env.COOKIE_SECRET));
+
+// 404 handler
+app.use(notfoundHandler);
+
+// common handler
+app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
   console.log("app is running on port", process.env.PORT);
