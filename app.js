@@ -11,6 +11,9 @@ const {
   notfoundHandler,
 } = require("./middlewares/common/errorHandler");
 
+const loginRouter = require("./router/loginRouter");
+
+//
 const app = express();
 dotenv.config();
 
@@ -32,6 +35,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // parse cookies
 app.use(cookieParser(process.env.COOKIE_SECRET));
+
+// routing setup
+
+app.use("/", loginRouter);
+// f
 
 // 404 handler
 app.use(notfoundHandler);
