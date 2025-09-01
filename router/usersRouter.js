@@ -12,12 +12,13 @@ const {
   addUserValidators,
   addUserValidationHandler,
 } = require("../middlewares/users/userValidation");
+const { checkLogin } = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 
 // users page
 
-router.get("/", decorateHtmlResponse("Users"), getUsers);
+router.get("/", decorateHtmlResponse("Users"),checkLogin ,getUsers);
 
 // add user
 router.post(
