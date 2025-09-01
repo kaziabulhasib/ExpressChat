@@ -1,6 +1,6 @@
 // external imports
 const bcrypt = require("bcrypt");
-const { createError } = require("http-errors");
+const createError = require("http-errors");
 
 // internal imports
 
