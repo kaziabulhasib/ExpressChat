@@ -31,7 +31,7 @@ const addUserValidators = [
     }),
   check("mobile")
     .isMobilePhone("en-IN", {
-      strictMode: true,
+      strictMode: false,
     })
     .withMessage("Mobile number must be a valid Indian mobile number")
     .custom(async (value) => {
